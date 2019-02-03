@@ -32,8 +32,8 @@ public class MainactivityPresenter implements MainactivityPresenterCallback{
     }
 
     @Override
-    public void getMovies() {
-        getObservable().subscribeWith(getObserver());
+    public void getMovies(int i) {
+        getObservable(i).subscribeWith(getObserver());
     }
 
     @Override
@@ -71,9 +71,9 @@ public class MainactivityPresenter implements MainactivityPresenterCallback{
         };
     }
 
-    private Observable<MovieResponce> getObservable(){
+    private Observable<MovieResponce> getObservable(int pageno){
         return NetworkClient.getRetrofit().create(NetworkInterface.class)
-                .getMovies("4ac38ecb93bdcc6f5bf09febda8043c9","en-US",1,null)
+                .getMovies("4ac38ecb93bdcc6f5bf09febda8043c9","en-US",pageno,null)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

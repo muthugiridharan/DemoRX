@@ -3,4 +3,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="retrofit_2">Retrofit 2</string>
+    <string name="swipe_view">Swipe view</string>
+    <string name="map">Map</string>
 </resources>

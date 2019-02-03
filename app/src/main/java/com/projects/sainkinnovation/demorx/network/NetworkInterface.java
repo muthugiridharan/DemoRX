@@ -1,9 +1,11 @@
 package com.projects.sainkinnovation.demorx.network;
 
+import com.google.gson.JsonObject;
 import com.projects.sainkinnovation.demorx.models.MovieResponce;
 import com.projects.sainkinnovation.demorx.models.SelectedMovie;
 
 import io.reactivex.Observable;
+import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -17,5 +19,7 @@ public interface NetworkInterface {
         @GET("movie/{movieId}")
         Observable<SelectedMovie> getMovie(@Path("movieId") int movieId,
                                            @Query("api_key") String api_key,@Query("language") String language);
+        @GET("json")
+        Call<JsonObject> getPolylineData(@Query("origin") String origin, @Query("destination") String destination);
 
 }

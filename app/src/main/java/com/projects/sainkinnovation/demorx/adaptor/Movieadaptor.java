@@ -1,9 +1,12 @@
 package com.projects.sainkinnovation.demorx.adaptor;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 import com.projects.sainkinnovation.demorx.R;
 import com.projects.sainkinnovation.demorx.models.Result;
+import com.projects.sainkinnovation.demorx.utlity.MoviesmodelCallback;
 import com.projects.sainkinnovation.demorx.views.MainactivityCallback;
 
 import java.util.List;
@@ -37,7 +42,7 @@ public class Movieadaptor extends RecyclerView.Adapter<Movieadaptor.Viewholder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Viewholder holder, final int position) {
+    public void onBindViewHolder(@NonNull final Viewholder holder, int position) {
         holder.tvTitle.setText(movieList.get(position).getTitle());
         holder.tvOverview.setText(movieList.get(position).getOverview());
         holder.tvReleaseDate.setText(movieList.get(position).getReleaseDate());
@@ -45,14 +50,45 @@ public class Movieadaptor extends RecyclerView.Adapter<Movieadaptor.Viewholder>{
         holder.ltParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainactivityCallback.viewClicked(position);
+                mainactivityCallback.viewClicked(holder.getAdapterPosition());
             }
         });
     }
 
     @Override
+    public void onBindViewHolder(@NonNull final Viewholder holder, int position, @NonNull List<Object> payloads) {
+        if(payloads.isEmpty()) {
+            super.onBindViewHolder(holder, position, payloads);
+        }else{
+            Bundle o = (Bundle) payloads.get(position);
+            Result result=o.getParcelable("Result");
+            Log.i("Adaptor", "onBindViewHolder: data==>"+ new Gson().toJson(result));
+            holder.tvTitle.setText(movieList.get(position).getTitle());
+            holder.tvOverview.setText(movieList.get(position).getOverview());
+            holder.tvReleaseDate.setText(movieList.get(position).getReleaseDate());
+            Glide.with(context).load("https://image.tmdb.org/t/p/w500/"+movieList.get(position).getPosterPath()).into(holder.ivMovie);
+            holder.ltParent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mainactivityCallback.viewClicked(holder.getAdapterPosition());
+                }
+            });
+        }
+    }
+
+    @Override
     public int getItemCount() {
         return movieList.size();
+    }
+
+    public void updateArrayList(List<Result> list){
+        MoviesmodelCallback moviesmodelCallback=new MoviesmodelCallback(list,movieList);
+        DiffUtil.DiffResult diffResult=DiffUtil.calculateDiff(moviesmodelCallback);
+        diffResult.dispatchUpdatesTo(this);
+        movieList.clear();
+        movieList.addAll(list);
+//        notifyDataSetChanged();
+
     }
 
     class Viewholder extends RecyclerView.ViewHolder{

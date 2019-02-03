@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "420741869934",
+    "firebase_url": "https://chat-app-51057.firebaseio.com",
+    "project_id": "chat-app-51057",
+    "storage_bucket": "chat-app-51057.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:420741869934:android:374b4af11ea6d701",
+        "android_client_info": {
+          "package_name": "com.hieuapp.rivchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "420741869934-0pf73m25nsghinn2f693f9bksa3lheus.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr_WxG4iEtWnfM5R0VkJ_nR0ydzQPCN6w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:420741869934:android:53946468e78a4318",
+        "android_client_info": {
+          "package_name": "com.projects.sainkinnovation.demorx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "420741869934-bk6ugi9hc003k7gn4ld61p91l6e3d586.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.projects.sainkinnovation.demorx",
+            "certificate_hash": "9e73ace6ee073b66dd1585482733615167704417"
+          }
+        },
+        {
+          "client_id": "420741869934-0pf73m25nsghinn2f693f9bksa3lheus.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr_WxG4iEtWnfM5R0VkJ_nR0ydzQPCN6w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "420741869934-0pf73m25nsghinn2f693f9bksa3lheus.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

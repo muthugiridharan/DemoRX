@@ -23,7 +23,7 @@ public class Swipeview extends AppCompatActivity implements  MainactivityCallbac
         setContentView(R.layout.activity_swipeview);
         swipeView=findViewById(R.id.swipeView);
         MainactivityPresenter mainactivityPresenter=new MainactivityPresenter(this);
-        mainactivityPresenter.getMovies();
+        mainactivityPresenter.getMovies(1);
         swipeView.getBuilder()
                 .setDisplayViewCount(3)
                 .setSwipeDecor(new SwipeDecor()
